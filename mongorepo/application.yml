@@ -1,0 +1,20 @@
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      host: host.docker.internal
+      port: 27017
+      database: testmongodb
+      username: rajuser1
+      password: Pa$word1 
+eureka:
+    instance:
+      preferIpAddress: true
+    client:
+      registerWithEureka: true
+      fetchRegistry: true
+      serviceUrl:
+        defaultZone: http://localhost:9091/eureka
+ribbon:
+  eureka:
+    enabled: true

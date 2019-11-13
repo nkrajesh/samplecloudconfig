@@ -1,0 +1,39 @@
+server:
+  port: 9099
+spring:
+  application:
+    name: sampleconfigserver
+  cloud:
+    config:
+      server:
+        git:
+          uri:  https://github.com/nkrajesh/k8s
+          search-paths: mongorepo
+          username: nkrajesh@hotmai.com
+          password: ENC(r6HYWIuFO5VQ/6BzetuP3bAfqCA81R3O)
+    kubernetes:
+      enabled:  true
+      discovery:
+        enabled:  true                              
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+appservice:
+  discovery:
+    host: host.docker.internal
+    port: 9091         
+eureka:
+    instance:
+      preferIpAddress: false
+      hostname: ${appservice.discovery.host}
+    client:
+      registerWithEureka: false
+      fetchRegistry: false
+      enabled:  false
+      serviceUrl:
+        defaultZone: http://${appservice.discovery.host}:${appservice.discovery.port}/eureka
+ribbon:
+  eureka:
+    enabled: false

@@ -1,0 +1,29 @@
+server:
+  port: 9099
+spring:
+  application:
+    name: sampleconfigserver
+  cloud:
+    config:
+      server:
+        git:
+          uri:  https://github.com/nkrajesh/k8s
+          search-paths: mongorepo
+          username: nkrajesh@hotmai.com
+          password: Raj@Cumm1ng
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+eureka:
+    instance:
+      preferIpAddress: true
+    client:
+      registerWithEureka: false
+      fetchRegistry: false
+      serviceUrl:
+        defaultZone: http://host.docker.internal:9091/eureka
+ribbon:
+  eureka:
+    enabled: false
